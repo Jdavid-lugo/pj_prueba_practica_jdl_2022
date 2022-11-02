@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\comprasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('login');
@@ -23,13 +25,13 @@ Route::get('/', function () {
  })->middleware(['auth'])->name('dashboard');
 
 
- Route::get('/compras', function () {
-     return view('compras.index');
- })->middleware(['auth'])->name('compras');
+ Route::get('/compras', [ComprasController::class, 'index']
+ )->middleware(['auth'])->name('compras');
 
 
  Route::get('/facturas', function () {
     return view('facturas.index');
 })->middleware(['auth'])->name('facturas');
+
 
 require __DIR__.'/auth.php';
