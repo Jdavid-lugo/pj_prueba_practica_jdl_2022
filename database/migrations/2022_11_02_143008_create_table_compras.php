@@ -16,9 +16,11 @@ class CreateTableCompras extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->bigInteger('id', true);
             $table->timestamp('created_at')->useCurrent();
+            $table->unsignedBigInteger('id_producto');
+            $table->unsignedBigInteger('id_user');
+            //$table->foreign('id_producto', 'producto_compra')->references('id')->on('productos')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            //$table->foreign('id_user', 'user_compra')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
             $table->softDeletes();
-            $table->foreign('id_producto', 'producto_id_fkey')->references('id')->on('productos')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-            $table->foreign('id_user', 'user_id_fkey')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
         });
     }
 

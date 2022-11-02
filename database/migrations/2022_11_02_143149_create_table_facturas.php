@@ -15,9 +15,10 @@ class CreateTableFacturas extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->bigInteger('id', true);
+            $table->unsignedBigInteger('id_compra');
             $table->timestamp('created_at')->useCurrent();
             $table->softDeletes();
-            $table->foreign('id_compra', 'compra_id_fkey')->references('id')->on('compras')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            //$table->foreign('id_compra', 'compra_id_fkey')->references('id')->on('compras')->onUpdate('RESTRICT')->onDelete('RESTRICT');
         });
     }
 
